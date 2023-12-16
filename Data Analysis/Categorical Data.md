@@ -73,8 +73,8 @@ this commonly occurs with spelling mistakes, whitespaces and other errors.
 by using string methods and the replace method, we can resolve these issues and clean the column
 do not forget to change the column back to category with `astype`
 we can also use the `str` object to access elements with methods like `contains`, `isin`,  etc.
-![[Pasted image 20231126142453.png]]
-![[Pasted image 20231126142419.png]]
+![Pasted image 20231126142453.png](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231126142453.png/?raw=true)
+![Pasted image 20231126142419.png](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231126142419.png/?raw=true)
 
 # Visualizing Categorical data
 we mainly use the Seaborn's `catplot` to plot categorical plots. it has many options for what kind of plot you want to plot.
@@ -82,23 +82,28 @@ we mainly use the Seaborn's `catplot` to plot categorical plots. it has many opt
 ## Box plots
 box plots show the distribution of a numeric variable. with the x parameter being a categorical variable and the y parameter being a numeric quantity, box plots can be used to easily see how a numeric quantity varies with categories. 
 it is also useful to use the `whitegrid` style to denote outliers
-![[Pasted image 20231126181704.png]]
+![[Pasted image 20231126181704.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231126181704.png/?raw=true)
+
 
 ## Bar Plots
 bar plots are used to quickly check a summary statistic across different categories. the hue parameter is also used to check with a third variable.
-![[Pasted image 20231126184516.png]]
+![[Pasted image 20231126184516.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231126184516.png/?raw=true)
+
 
 ## Point plots and count plots
 point plots are the same as bar plots except they have points pointing to the mean with the confidence intervals. all the points are connected. point plots are in general better than bar plots.
 count plots are bars the measure the count of number of elements in categories.
-![[Pasted image 20231126194438.png]]![[Pasted image 20231126194504.png]]
+![[Pasted image 20231126194438.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231126194438.png/?raw=true)
+![[Pasted image 20231126194504.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231126194504.png/?raw=true)
 
 ## Additional plots
 the `catplot` method is mainly preferred for its way of creating subplots with rows and columns.
 this can be used to emphasis a particular category and plotting them across rows and columns instead of adding them as a hue parameter.
 
-![[Pasted image 20231126195929.png]]
-![[Pasted image 20231126200006.png]]
+![[Pasted image 20231126195929.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231126195929.png/?raw=true)
+
+![[Pasted image 20231126200006.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231126200006.png/?raw=true)
+
 
 # Pitfalls and encoding
 ## Pitfalls
