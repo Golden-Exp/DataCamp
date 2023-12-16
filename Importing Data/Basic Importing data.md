@@ -138,7 +138,7 @@ print(engine.table_names())
 
 ## Querying in Relational Databases
 
-![[Pasted image 20231129114036.png]]
+![[Pasted image 20231129114036.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Importing%20Data/Pasted%20image%2020231129114036.png/?raw=true)
 
 generally to query is to get data from the database.
 ```python
