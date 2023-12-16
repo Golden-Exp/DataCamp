@@ -8,19 +8,19 @@ df.merge(df2, on=col name, suffixes=("_a, _b")) -> can give own suffixes too
 ## Mutating joins
 ### inner join
 .merge gives the result of inner join
-![[Pasted image 20231029185251.png]]
+![[Pasted image 20231029185251.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Pandas/Attachments/Pasted%20image%2020231029185251.png/?raw=true)
 
 if the common column is unique and has only one row for one value of that column - > one to one relationship
-![[Pasted image 20231029190448.png]]
+![[Pasted image 20231029190448.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Pandas/Attachments/Pasted%20image%2020231029190448.png/?raw=true)
 
 if there are multiple rows for 1 value of the common column in the right table it is a one to many relationship
-![[Pasted image 20231029190313.png]]
+![[Pasted image 20231029190313.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Pandas/Attachments/Pasted%20image%2020231029190313.png/?raw=true)
 
 ### left join
 ```python
 left.merge(right, on=col, how="left")
 ```
-![[Pasted image 20231029193238.png]]
+![[Pasted image 20231029193238.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Pandas/Attachments/Pasted%20image%2020231029193238.png/?raw=true)
 
 left join one to one will have the same no. of rows as that of the left table
 left join one to many will have either the same or greater no. of  rows as that of the left table
@@ -28,12 +28,12 @@ left join one to many will have either the same or greater no. of  rows as that 
 ```python
 left.merge(right, how="right")
 ```
-![[Pasted image 20231029193903.png]]
+![[Pasted image 20231029193903.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Pandas/Attachments/Pasted%20image%2020231029193903.png/?raw=true)
 ### outer join
 ```python
 left.merge(right, how="outer")
 ```
-![[Pasted image 20231029211308.png]]
+![[Pasted image 20231029211308.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Pandas/Attachments/Pasted%20image%2020231029211308.png/?raw=true)
 
 ### self join
 will be useful when dealing with
@@ -60,7 +60,8 @@ Filter observations from table based on whether or not they match an observation
 ### semi join
 inner join but only left table included 
 and also no duplicates
-![[Pasted image 20231029224534.png]]
+
+![[Pasted image 20231029224534.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Pandas/Attachments/Pasted%20image%2020231029224534.png/?raw=true)
 we first do an inner join then we check for the values of the common column that are present in the merged df. subset and that is semi join
 ```python
 genres_tracks = genres.merge(top_tracks, on='gid') 
@@ -69,7 +70,9 @@ print(top_genres.head())
 ```
 ### anti join
 the values of the left table that were not included in inner join
-![[Pasted image 20231029224913.png]]
+
+![[Pasted image 20231029224913.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Pandas/Attachments/Pasted%20image%2020231029224913.png/?raw=true)
+
 we first perform a left join. then we locate the rows that are only available in the left df. then subset the common column of that and subset the left table using that common col list.
 ```python
 genres_tracks = genres.merge(top_tracks, on='gid' , how='left' , indicator=True) 
@@ -102,7 +105,9 @@ pd.concat([], verify_integrity=True) -> checks if the index and only if the the 
 ## Ordered Merges
 ### merge_ordered()
 same as merge except this time its ordered and also has some other parameters
-![[Pasted image 20231029233612.png]]
+
+![[Pasted image 20231029233612.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Pandas/Attachments/Pasted%20image%2020231029233612.png/?raw=true)
+
 *note:* default is outer for merge_ordered()
 ```python
 pd.merge_ordered(df1, df2, on="", suffixes=(), fill_method='ffil') -> fills missing values with previous values
