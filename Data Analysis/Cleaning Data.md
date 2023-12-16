@@ -2,7 +2,7 @@
 # Common Data Problems
 ## Datatype constraints
 cleaning data should be the first thing to do with the data you received before starting anything else.
-![[Pasted image 20231127095948.png]]
+![[Pasted image 20231127095948.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231127095948.png/?raw=true)
 
 most commonly mistook datatypes are categories and numeric. sometimes, an integer or a float is stored as an object datatype in pandas, due to some extra string character. to perform the required summary statistics, you have to remove the extra string and convert the column to numerical.
 also, sometimes, categorical columns are label-encoded and has numbers in them. they are, by default, stored as integer. we don't want this, so we convert it to category
@@ -58,7 +58,7 @@ df.groupby(by=the subset we used for duplicates). \
 						agg(dictionary to do what summary statistic for what column).\ 
 						reset_index()
 ```
-![[Pasted image 20231127104007.png]]
+![[Pasted image 20231127104007.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231127104007.png/?raw=true)
 
 # Text and Categorical problems
 categorical columns might sometimes have inconsistent values, like categories that are not even valid.
@@ -69,7 +69,8 @@ for example a Z+ blood type.
 
 first we need to filter the inconsistent value. to do this we use an anti join
 the left anti join takes in two tables and gives out values **that are only in left table and not in right table.**
-![[Pasted image 20231127105902.png]]
+![[Pasted image 20231127105902.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231127105902.png/?raw=true)
+
 
 we can use our incorrect column as one table and a column of all possible correct categories as another table
 by using a left anti join here we get values that are only present in our column and are not present in the "all possible categories" column. meaning, we have successfully filtered out the required data
@@ -183,18 +184,18 @@ import matplotlib.pyplot as plt
 msno.matrix(df)
 plt.show()
 ```
-![[Pasted image 20231127134519.png]]
+![[Pasted image 20231127134519.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231127134519.png/?raw=true)
 
 this is basically the table visualized like a grid which is pretty cool
 to find these relationships separate into missing rows and non-missing rows and apply the `describe` method on both and spot the difference
 to check the relationship we can try plotting differently
-![[Pasted image 20231127134731.png]]
+![[Pasted image 20231127134731.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231127134731.png/?raw=true)
 with this type of visualization we can see that all the missing values come for lower temperatures.
 
 to deal with missing values we either, 
 1. impute with summary statistic
 2. delete
-![[Pasted image 20231127134858.png]]
+![[Pasted image 20231127134858.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231127134858.png/?raw=true)
 ```python
 df.dropna(subset=[list of columns to check and drop])
 df.fillna({col:value to be filled with})
@@ -203,7 +204,7 @@ df.fillna({col:value to be filled with})
 # Record Linkage
 ## String Similarity
 this is the concept of checking if two strings are similar. there is a parameter known as minimum edit distance. this calculates the minimum number of turns required to convert one word to another. the lesser the MED, the more similar the words are to each other.
-![[Pasted image 20231127144729.png]]
+![[Pasted image 20231127144729.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231127144729.png/?raw=true)
 there are 4 operations
 1. insertion
 2. deletion
@@ -241,7 +242,7 @@ for cat in categories:  #looping through the correct categories
 ## Generating Pairs
 some tables can't be joined with a join because they don't have a unique identifier common to both tables. in that case we use record linkage.
 Record linkage is the act of linking data from two different sources regarding the same entity.
-![[Pasted image 20231127155808.png]]
+![[Pasted image 20231127155808.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231127155808.png/?raw=true)
 
 ```python
 import recordlinkage
@@ -266,14 +267,16 @@ it has 2 methods.
 1. `exact` -> to see which pairs' given column match exactly
 2. `string` -> to see which pairs' given column match using string similarity threshold is the minimum `WRatio`
 then the table of all these matches is done using the `compute`
-![[Pasted image 20231127165326.png]]
-![[Pasted image 20231127165559.png]]
+![[Pasted image 20231127165326.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231127165326.png/?raw=true)
+
+![[Pasted image 20231127165559.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231127165559.png/?raw=true)
+
 
 first is the index of `df1` and then index of `df2` that has matching `block` columns then all the matches.
 for the above table, its a complete match if, the date of birth and the surname are already matches(i.e. 1) or if the state and the address columns are already a match
 so, to filter out the same columns, both `dob` and `surname` should be 1 or both `state` and `address` should be 1
 this can be done like
-![[Pasted image 20231127170202.png]]
+![[Pasted image 20231127170202.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Data%20Analysis/Attachments/Pasted%20image%2020231127170202.png/?raw=true)
 
 ## Linking Data Frames
 now that we have got the matches and scored them, we are gonna link the two data frames after removing the duplicates.
