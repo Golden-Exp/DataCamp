@@ -15,7 +15,7 @@ ax.plot(x, y, color='r') -> changes colr to red
 more markers -> [markers](https://matplotlib.org/stable/api/markers_api.html)
 more linestyles -> [linestyles](https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html)
 
-![[Pasted image 20231113084945.png]]
+![[Pasted image 20231113084945.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Matplotlib/Attachments/Pasted%20image%2020231113084945.png/?raw=true)
 
 if linestyle=None -> no line gives a scatter plot
 ```python
@@ -34,8 +34,10 @@ fig, ax = plt.subplots(3, 2, sharey=True) -> creates a grid of 3 rows and 2 colu
 ax[0][0].plot(...)
 ```
 
-![[Pasted image 20231113090323.png]]
-![[Pasted image 20231113090345.png]]
+![[Pasted image 20231113090323.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Matplotlib/Attachments/Pasted%20image%2020231113090323.png/?raw=true)
+
+![[Pasted image 20231113090345.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Matplotlib/Attachments/Pasted%20image%2020231113090345.png/?raw=true)
+
 
 #### Twin plots
 ```python
@@ -45,8 +47,10 @@ ax.tick_params("either x or y", colors='r') -> changes the ticks of either x or 
 ```
 note that the color parameter of `tick_params` is **colors** and not **color**
 
-![[Pasted image 20231113135336.png]]
-![[Pasted image 20231113135402.png]]
+![[Pasted image 20231113135336.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Matplotlib/Attachments/Pasted%20image%2020231113135336.png/?raw=true)
+
+![[Pasted image 20231113135402.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Matplotlib/Attachments/Pasted%20image%2020231113135402.png/?raw=true)
+
 
 two axes in the same plot. can use colors to differentiate
 this is useful when u want to represent 2 different measurements in the same plot.
@@ -66,12 +70,15 @@ ax.annotate("label of annotation", xy = (x of the point to annotate, y of the po
 `xytext` - the coordinates of the label of the annotation
 when `arrowprops` is left empty default properties are used
 refer : [annotations](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.annotate.html)
-![[Pasted image 20231113141301.png]]
+
+![[Pasted image 20231113141301.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Matplotlib/Attachments/Pasted%20image%2020231113141301.png/?raw=true)
+
 can also denote a line parallel to the x or y axis
 ```python
 ax.axvline(x="the number where u want to draw the line", label="", linestyle="--")
 ```
-![[Pasted image 20231119221726.png]]
+![[Pasted image 20231119221726.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Matplotlib/Attachments/Pasted%20image%2020231119221726.png/?raw=true)
+
 ### Bar charts
 used to represent numbers for a certain function/group
 ```python
@@ -83,7 +90,8 @@ ax.bar(x2, y2, bottom = y, label="label for legend")
 ax.bar(x3, y3, bottom = y + y1) -> starts from the sum of y and y1
 ax.legend() -> displays the legend
 ```
-![[Pasted image 20231113222240.png]]
+![[Pasted image 20231113222240.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Matplotlib/Attachments/Pasted%20image%2020231113222240.png/?raw=true)
+
 
 ### Histograms
 used to show the distribution of the numeric column
@@ -92,7 +100,8 @@ ax.hist(data, bins=no.of bins or list of bins, histtype="step") -> returns a lin
 ax.hist(data2, bins=no.of bins or list of bins, histtype="step") -> stacks both histograms
 ```
 
-![[Pasted image 20231113222558.png]]
+![[Pasted image 20231113222558.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Matplotlib/Attachments/Pasted%20image%2020231113222558.png/?raw=true)
+
 
 ### Statistical plotting
 comparing visualizations for statistics
@@ -105,14 +114,17 @@ so giving the std as error bar means we can see the spread of the data.
 ```python
 ax.bar(x, y, yerr=x.mean() or x.std())
 ```
-![[Pasted image 20231113223625.png]]
+![[Pasted image 20231113223625.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Matplotlib/Attachments/Pasted%20image%2020231113223625.png/?raw=true)
+
 
 ##### Error bars in line plots
 ```python
 ax.errorbar(x, y, data of the summary statistic of all values of x)
 ```
-![[Pasted image 20231113223752.png]]
-![[Pasted image 20231113223805.png]]
+![[Pasted image 20231113223752.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Matplotlib/Attachments/Pasted%20image%2020231113223752.png/?raw=true)
+
+![[Pasted image 20231113223805.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Matplotlib/Attachments/Pasted%20image%2020231113223805.png/?raw=true)
+
 
 #### Boxplots
 boxplots are boxes with the IQR and lines denoting 1.5 * IQR + 75th percentile 
@@ -121,7 +133,8 @@ and 25th percentile - 1.5 * IQR anything greater or lesser are outliers
 ```python
 ax.boxplot(list of data to plot)
 ```
-![[Pasted image 20231113224118.png]]
+![[Pasted image 20231113224118.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Matplotlib/Attachments/Pasted%20image%2020231113224118.png/?raw=true)
+
 
 the orange line is the median or 50th percentile
 
@@ -134,15 +147,19 @@ ax.scatter(x, y, label="label", c="values with the same length as x and y to enc
 the c keyword is different from color
 color uses the same color for all points
 c uses a different color for high measurements and another for low measurements and the color transitions between
-![[Pasted image 20231113225702.png]]
-![[Pasted image 20231113225718.png]]
+
+![[Pasted image 20231113225702.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Matplotlib/Attachments/Pasted%20image%2020231113225702.png/?raw=true)
+
+![[Pasted image 20231113225718.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Matplotlib/Attachments/Pasted%20image%2020231113225718.png/?raw=true)
+
 
 ### Styles for plots
 ```python
 plt.style.use("name of the style")
 plt.style.use("default") -> changes back to default
 ```
-![[Pasted image 20231113230636.png]]
+![[Pasted image 20231113230636.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Matplotlib/Attachments/Pasted%20image%2020231113230636.png/?raw=true)
+
 
 refer [styles](https://matplotlib.org/stable/gallery/style_sheets/style_sheets_reference.html) for more styles
 
