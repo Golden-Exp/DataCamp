@@ -83,11 +83,11 @@ df.query('col > value and col < value') -> smth like this use single quotes
 df.query('col == "value" and condition') -> for strings double quotes are used
 ```
 melt method for transforming long df to wide df
-![[Pasted image 20231030003002.png]]
+![[Pasted image 20231030003002.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Pandas/Attachments/Pasted%20image%2020231030003002.png/?raw=true)
 ```python
 df.melt(id_vars=[columns that u dont want to change], value_vars=[columns that u want under the column variable], var_name=variable name, value_name=value_name)
 ```
-![[Pasted image 20231030003209.png]]
+![[Pasted image 20231030003209.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Pandas/Attachments/Pasted%20image%2020231030003209.png/?raw=true)
 
 ```python
 df[new col] = df[col].map(dictionary)
