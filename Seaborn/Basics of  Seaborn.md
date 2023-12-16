@@ -28,7 +28,7 @@ just like color in matplotlib we can use the hue parameter to differentiate with
 ```python
 sns.scatterplot(x=x, y=y, data=df, hue="another col name", hue_order=[list of legend], palette={dict of legend to its color})
 ```
-![[Pasted image 20231114100358.png]]
+![[Pasted image 20231114100358.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Seaborn/Attachments/Pasted%20image%2020231114100358.png/?raw=true)
 
 ## Relplots
 relationship plots are plots that show the relationship between two variables.
@@ -46,14 +46,14 @@ sns.relplot(x="col name", y="col name", data=df, kind="scatter or line",
 sns.relplot(x="col name", y="col name", data=df, kind="scatter", size="sequence or col with categories", hue="col name")
 ```
 mentioning size allows us to differentiate different groups with the size of the points
-![[Pasted image 20231115103813.png]]
+![[Pasted image 20231115103813.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Seaborn/Attachments/Pasted%20image%2020231115103813.png/?raw=true)
 
 #### Style
 ```python
 sns.relplot(x="col name", y="col name", data=df, kind="scatter", hue="col name", style="sequence or col with categories")
 ```
 each category will have a different style of point
-![[Pasted image 20231115103847.png]]
+![[Pasted image 20231115103847.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Seaborn/Attachments/Pasted%20image%2020231115103847.png/?raw=true)
 
 #### Alpha
 ```python
@@ -62,7 +62,7 @@ sns.relplot(x="col name", y="col name", data=df, kind="scatter", hue="col name",
 alpha is the opacity of the points
 0 - transparent
 1 - opaque
-![[Pasted image 20231115103910.png]]
+![[Pasted image 20231115103910.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Seaborn/Attachments/Pasted%20image%2020231115103910.png/?raw=true)
 
 
 ### Customizations in Line plots
@@ -76,7 +76,8 @@ style creates different lines for different categories.
 hue gives different colors for different lines.
 markers mark the points
 dashes false means the other lines don't have different dash styles
-![[Pasted image 20231115231321.png]]
+
+![[Pasted image 20231115231321.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Seaborn/Attachments/Pasted%20image%2020231115231321.png/?raw=true)
 
 ```python
 sns.relplot(x="col", y="col", data=df, kind="line", ci="sd or None")
@@ -87,7 +88,8 @@ this is represented by the shaded region.
 confidence interval indicates the uncertainty of our estimate.
 confidence interval of the mean signify that about 95% of times the mean of y at x comes under this shaded region.
 to get the spread of the dataset we use `cd="sd"`. this gives the std and so we can see the whole spread
-![[Pasted image 20231115231518.png]]
+
+![[Pasted image 20231115231518.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Seaborn/Attachments/Pasted%20image%2020231115231518.png/?raw=true)
 
 ## Categorical plots
 categorical plots, i.e. plots that represent categories.
@@ -98,7 +100,7 @@ count plots are plots that show the `value_counts` of each category.
 ```python
 sns.catplot(x="col", data=df, kind="count", order=[order of categories])
 ```
-![[Pasted image 20231116095600.png]]
+![[Pasted image 20231116095600.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Seaborn/Attachments/Pasted%20image%2020231116095600.png/?raw=true)
 
 ### Bar plots
 bar plots are used to show the average amount of a numeric variable associated to each category.
@@ -107,7 +109,7 @@ when the numerical/y part is True/False, bar charts show the percentage.
 ```python
 sns.catplot(x="col", y="col", data=df, kind="bar", ci="None if u don't want")
 ```
-![[Pasted image 20231116095852.png]]
+![[Pasted image 20231116095852.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Seaborn/Attachments/Pasted%20image%2020231116095852.png/?raw=true)
 
 ### Box plots
 box plots show the distribution of the given numeric variable across the different categories. it is represented by its whiskers and the rectangle. the rectangle is the 25th and 75th percentile, while the median is the red line in between. the diamonds are outliers.
@@ -118,7 +120,7 @@ the `sym` parameter allows you to omit outliers if you give it an empty string
 ```python
 sns.catplot(x="col", y="col", data=df, kind="box", sym="", whis=2.0)
 ```
-![[Pasted image 20231116102702.png]]
+![[Pasted image 20231116102702.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Seaborn/Attachments/Pasted%20image%2020231116102702.png/?raw=true)
 
 ### Point plots
 these plots show the mean of each category connected to each other by a line. it also shows the confidence interval just like a bar plot and a line plot. however, 
