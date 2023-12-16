@@ -226,6 +226,6 @@ print = run_n_times(5)(print)
 print("hello") -> prints hello 5 times
 ```
 
-![[Pasted image 20231211113340.png]]
+![[Pasted image 20231211113340.png]](https://github.com/Golden-Exp/DataCamp/blob/main/python%20Tool%20kit/Pasted%20image%2020231211113340.png/?raw=true)
 
 here tags takes in any number of arguments named tags. we then set a tags attribute for the wrapper that is equal to the tags given to tags. so that we can check what are the tags whenever we need to 
