@@ -18,7 +18,7 @@ sampling is useful when we have a very large dataset and we cant waste resources
 convenience sampling is when data collection is done in a way that is convenient for us, but leads to selection bias. 
 for example, a sample survey was taken over telephones for which president was going to win. however the results from the survey widely varied from the actual results. this is because of convenience sampling. since the survey was done through telephones, only rich people contributed to the survey. that is not representative of the whole population.
 we can easily spot convenience sampling with histograms. plot the population set and the sample set side by side. if the plots are kind of identical, that's good. else, the sample is bad. and the point estimates will also be way off from the actual value.
-![[Pasted image 20231222233218.png]](https://github.com/Golden-Exp/DataCamp/blob/main/statistics/Attachments/Pasted%20image%2020231222233218.png)
+![[Pasted image 20231222233218.png]](https://github.com/Golden-Exp/DataCamp/blob/main/statistics/Attachments/Pasted%20image%2020231222233218.png/?raw=true)
 
 ![[Pasted image 20231222233235.png]](https://github.com/Golden-Exp/DataCamp/blob/main/statistics/Attachments/Pasted%20image%2020231222233235.png)
 
