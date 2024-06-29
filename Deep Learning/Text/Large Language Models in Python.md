@@ -21,7 +21,7 @@ classifier = pipeline("text-classification",
 Language tasks using LLMs can be of two types 
 1. Language Generation
 2. Language Understanding
-![[Pasted image 20240311190325.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240311190325.png/?raw=true)
+![[Pasted image 20240311190325.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240311190325.png/?raw=true)
 
 #### Text classification
 here, the given text is classified into categories that are already pre-defined. Sentiment analysis is an example of this.
@@ -76,7 +76,7 @@ The Transformers architecture is for processing, understanding and generating te
 
 Original Transformer consists of 2 main components - encoder and decoder
 in each layer, attention mechanism is applied to capture semantic meanings
-![[Pasted image 20240311231244.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240311231244.png/?raw=true)
+![[Pasted image 20240311231244.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240311231244.png/?raw=true)
 `PyTorch` Transformers can be implemented as follows
 `d_model` : this is the embedding dimension used to represent inputs, intermediate data and outputs
 `n_heads`: this refers to the number of attention heads, which perform parallel computations, usually set as a divisor of the number of embeddings
@@ -103,7 +103,7 @@ print(model)
 
 # The Transformers Architecture
 the transformers architecture uses attention mechanisms to process words/tokens. this makes the process more faster than RNNs as they process tokens sequentially.
-![[Pasted image 20240314170206.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240314170206.png/?raw=true)
+![[Pasted image 20240314170206.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240314170206.png/?raw=true)
 here, all tokens are weighed with importance weights simultaneously.
 but to weigh this, attention mechanisms require info about the position of the tokens. a position encoder precedes the attention mechanism
 given an embedding vector of a sequence, a vector is created with values describing the positions of each token, and are made unique by sine and cosine functions. then the embeddings are added with the position vector to get the positional encodings
@@ -132,11 +132,11 @@ what we are doing here is, we get a pe matrix, with elements up to the `max_leng
 
 self attention mechanisms find the words with utmost importance and use them to process sequences. to find this, first the given embedding tokens are divided into 3 vectors using linear transforms with trained weights: query, key and value
 then scaled dot product is applied to the query and key matrices to yield a matrix of attention scores for each word. this is then passed to a softmax function to get the relevance scaling for the attention scores. so each word has a score between 0 and 1 and all scores add up to 1. so for a given query - we have attention scores for other words.
-![[Pasted image 20240314171912.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240314171912.png/?raw=true)
+![[Pasted image 20240314171912.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240314171912.png/?raw=true)
 attention scores are multiplied with the values matrix to get updated token embeddings.
-![[Pasted image 20240314172033.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240314172033.png/?raw=true)
+![[Pasted image 20240314172033.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240314172033.png/?raw=true)
 the above process is done by one attention head. in reality, there are multiple heads working in parallel handling multiple things like context, sentiment, etc.
-![[Pasted image 20240314172203.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240314172203.png/?raw=true)
+![[Pasted image 20240314172203.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240314172203.png/?raw=true)
 
 ```python
 import torch.nn as nn
@@ -179,9 +179,9 @@ class MultiHeadAttention(nn.Module):
 		return self.output_linear(output)
 ```
 the mask here is instead of padding in regular NLP tasks. we can't use padding for attention mechanisms so we use masking instead.
-![[Pasted image 20240321010212.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240321010212.png/?raw=true)
+![[Pasted image 20240321010212.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240321010212.png/?raw=true)
 now for a transformer that only needs to understand the text and give simple outputs we need an encoder. to implement it,
-![[Pasted image 20240321004626.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240321004626.png/?raw=true)
+![[Pasted image 20240321004626.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240321004626.png/?raw=true)
 ```python
 class FeedForwardSubLayer(nn.Module):
 	def __init__(self, d_model, d_ff):
@@ -242,7 +242,7 @@ class ClassifierHead(nn.Module):
 
 Decoder only transformers involves two differences from encoder only. they have something called masked attention mechanisms, which helps in processing sequences iteratively. and the other thing is a softmax layer at end over the whole vocab to generate probabilities for each word and predict.
 By passing this matrix to the attention heads, each token in the sequence only pays attention to "past" information on its left-hand side.
-![[Pasted image 20240321185704.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240321185704.png/?raw=true)
+![[Pasted image 20240321185704.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240321185704.png/?raw=true)
 we just feed the decoder with the masked sequence when evaluating.
 
 ```python
@@ -267,14 +267,14 @@ class DecoderOnlyTransformer(nn.Module):
 ```
 
 for encoder and decoder both, we have something called cross attention mechanism, which connects both the encoder and the decoder. this is added to each decoder layer and takes in the input of the final encoder layer and the info processed by the decoder. this helps look back at the input sequence that went through the encoder.
-![[Pasted image 20240321192943.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240321192943.png/?raw=true)
+![[Pasted image 20240321192943.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240321192943.png/?raw=true)
 
 inside the decoder class we just add the cross attention layer
-![[Pasted image 20240321193117.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240321193117.png/?raw=true)
+![[Pasted image 20240321193117.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240321193117.png/?raw=true)
 here y is the encoder's final layer's output. and finally we have the same linear and softmax layers.
-![[Pasted image 20240321193259.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240321193259.png/?raw=true)
+![[Pasted image 20240321193259.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240321193259.png/?raw=true)
 when training, the output embedding is the labels, i.e. the actual things we want the model to generate. if its translation, then output embedding should be the translated sentences. when evaluating, the model gets an empty output embedding and proceeds to generate one on the fly layer by layer.
-![[Pasted image 20240321193519.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240321193519.png/?raw=true)
+![[Pasted image 20240321193519.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240321193519.png/?raw=true)
 
 # Pretrained LLMs
 to utilize pretrained LLMs we usually don't use the pipeline module. instead, we use the Auto class for importing models, which gives us more flexibility.
@@ -389,7 +389,7 @@ print(accuracy.compute(references=targets,  predictions=predicted_labels))
 ```
 
 different metrics are used for different tasks
-![[Pasted image 20240312191218.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240312191218.png/?raw=true)
+![[Pasted image 20240312191218.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240312191218.png/?raw=true)
 
 some metrics are
 ### Perplexity

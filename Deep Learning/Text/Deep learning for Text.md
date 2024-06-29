@@ -1,7 +1,7 @@
  #deeplearning #datacamp 
 # Text with `Pytorch`
 ## Preprocessing
-![[Pasted image 20240131200531.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240131200531.png/?raw=true)
+![[Pasted image 20240131200531.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240131200531.png/?raw=true)
 
 this is the pipeline for text data in `PyTorch`. first we preprocess the data. there are many types of preprocessing. some are:
 1. Tokenization

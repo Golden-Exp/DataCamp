@@ -20,7 +20,7 @@ class Data(Dataset): #inheriting the dataset module of pytorch
 
 `len` returns the length of the dataset and `getitems` returns the features and labels of a particular index.
 to create a model from OOP instead of sequential
-![[Pasted image 20240118001158.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240118001158.png/?raw=true)
+![[Pasted image 20240118001158.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240118001158.png/?raw=true)
 
 ```python
 dataset = Data("df_path.csv")
@@ -39,7 +39,7 @@ class Net(nn.module):
 ```
 ## Optimizers
 the forward pass begins by computing all the values of the neurons and finally the predictions. then with the predictions the loss is calculated and that loss is sent to the optimizer, with the parameters. the optimizer calculates the gradients and updates the parameters.
-![[Pasted image 20240118223204.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240118223204.png/?raw=true)
+![[Pasted image 20240118223204.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240118223204.png/?raw=true)
 the update of parameters is done in different ways. the learning rate is the main hyperparameter that decides how the parameters change. it gets multiplied by the gradients and are subtracted.
 although SGD is simple, it is rarely used. for example, using the same learning rate for each epoch might not be optimal. so `Adagrad` is used(Adaptive Gradients)
 ```python
@@ -58,10 +58,10 @@ the difference to this and RMSprop is that the momentum also gets adaptive.
 
 ## Vanishing and Exploding Gradients
 vanishing gradients is when the gradients get smaller and smaller as the epochs go on and finally becomes negligible. then the model stops learning.
-![[Pasted image 20240118225909.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240118225909.png/?raw=true)
+![[Pasted image 20240118225909.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240118225909.png/?raw=true)
 
 exploding gradients occur when the gradients get bigger and bigger and "explode". this diverges training to just those parameters.
-![[Pasted image 20240118230042.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240118230042.png/?raw=true)
+![[Pasted image 20240118230042.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240118230042.png/?raw=true)
 
 to avoid unstable gradients, we can use 3 steps
 1. Proper weights initialization
@@ -91,7 +91,7 @@ class Net(nn.Module):
 
 next activations. the RELU is a good activation function but it has the problem of some neurons becoming dead due to the null property of RELU. An ELU gives out the 
 max(-1, x) value, so there are no null weights. but the overall weights value decreases with this.
-![[Pasted image 20240118231118.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240118231118.png/?raw=true)
+![[Pasted image 20240118231118.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240118231118.png/?raw=true)
 
 Batch normalization is used to spread out values between layers and making sure all the weights across layers are normalized. to do this first we subtract everything from the mean and divide by the std to normalize the values.
 then the layer's outputs are scaled and shifted using parameters learnt from training. just like how the weights are learnt. for implementing,
@@ -122,7 +122,7 @@ class Net(nn.Module):
 ## Images in `PyTorch`
 images are made up of pixels. pixels are numbers containing the information about the color of the image. in grayscale images, each pixel is a number from 0 to 255, 0 being black and 1 being white.
 for colored images, each pixel is a sequence of 3 numbers denoting the intensity of Red, Green and Blue respectively.
-![[Pasted image 20240118232809.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240118232809.png/?raw=true)
+![[Pasted image 20240118232809.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240118232809.png/?raw=true)
 
 to load images in `PyTorch` we first define the transforms we are going to perform on the images. like turning them to tensors and resizing them.
 ```python
@@ -145,7 +145,7 @@ image = image.squeeze().permute(1, 2, 0)
 print(image.shape) #returns [128, 128, 3]
 ```
 squeeze removes the 1 dimension and permute changes the order from 0, 1, 2 to 1, 2, 0
-![[Pasted image 20240118234308.jpg]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240118234308.png/?raw=true)
+![[Pasted image 20240118234308.jpg]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240118234308.png/?raw=true)
 to display the image,
 ```python
 import matplotlib.pyplot as plt
@@ -165,22 +165,22 @@ Data augmentation allows the model to learn from more examples of larger diversi
 
 ## CNNs
 we can't really use the neural networks we have been using until now for images. that is because we would have a huge amount of parameters after 1 layer itself. this means training will be very slow 
-![[Pasted image 20240119000028.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119000028.png/?raw=true)
+![[Pasted image 20240119000028.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119000028.png/?raw=true)
 
 also linear models can't recognize spatial patterns. if for example there is a pattern in one corner, the linear layer can't learn to recognize the same pattern in other corners.
-![[Pasted image 20240119000044.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119000044.png/?raw=true)
+![[Pasted image 20240119000044.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119000044.png/?raw=true)
 
 A convolutional layer outputs feature maps which are used to compute predictions. feature maps are done by doing convolution operations on the input with a filter. the filter should be of a size with lesser dimensions than the input. then dot product is performed on the filter and the grid with matching dimensions as the filter from the input. we get this grid by sliding the filter on the input and thus all possible grids of the same dimensions are operated and the resulting grid is summed up and the result is the value of 1 space in the feature map.
-![[Pasted image 20240119001334.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119001334.png/?raw=true)
+![[Pasted image 20240119001334.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119001334.png/?raw=true)
 
 here we have a 3x3 filter sliding through the input which is 5x5. each grid of 3x3 in the input is operated on and results in a singular space in the feature map. many filters can be slid through the input and each filter gives a feature map. then activations can be applied to feature maps and they can be further processed again
-![[Pasted image 20240119001558.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119001558.png/?raw=true)
+![[Pasted image 20240119001558.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119001558.png/?raw=true)
 
 to make sure the feature map is of the same dimensions as the input we use padding to add a black pixels around the corners. this also makes sure corners are operated on multiple times instead of just once.
-![[Pasted image 20240119001715.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119001715.png/?raw=true)
+![[Pasted image 20240119001715.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119001715.png/?raw=true)
 
 another operation on convolutions is Max Pooling. here we reduce the height and width of the output of the feature maps by picking the max value from a grid of given dimensions of the filter used for pooling. if a filter of 2x2 is used, the grid is divided into 2x2 grids and each grid outputs 1 value which is the max in that 2x2 grid. this reduces the length and width by 2.
-![[Pasted image 20240119001934.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119001934.png/?raw=true)
+![[Pasted image 20240119001934.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119001934.png/?raw=true)
 
 ```python
 class Net(nn.Module):
@@ -241,10 +241,10 @@ we can also use metrics other than accuracy like precision and recall. both of t
 1. Micro average: where the true positives, true negatives and others are sum of them across all classes. then the formula is applied and precision/recall is calculated
 2. Macro average: here the mean of precision across all classes is taken
 3. Weighted average: here the precision is calculated across all classes and the weighted mean is taken. the weights are proportional to the size of data in each class.
-![[Pasted image 20240119005347.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119005347.png/?raw=true)
+![[Pasted image 20240119005347.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119005347.png/?raw=true)
 
 to evaluate,
-![[Pasted image 20240119005425.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119005425.png/?raw=true)
+![[Pasted image 20240119005425.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119005425.png/?raw=true)
 the predictions are calculated a little differently for images in `PyTorch`
 ```python
 with torch.no_grad():
@@ -299,7 +299,7 @@ this same technique also applies for speech recognition and LLMs.
 usual neural networks only work in one direction. however, RNNs or Recurrent Neural Networks works both in the forward and backward direction. this is to remember the previous input while deciding the new output.
 for example lets take a single neuron receiving the sequence one by one.
 first 1 element of the sequence goes in and the neuron gives two outputs, one is the output that is further passed down to other layers like usual and the other is passed back to itself, that is the same neuron. so when the next element of the sequence come in as input, this element and the hidden output of last time is taken into consideration and the 2 outputs are decided. this goes on until the end of the sequence.
-![[Pasted image 20240119160756.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119160756.png/?raw=true)
+![[Pasted image 20240119160756.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119160756.png/?raw=true)
 
 since the first input won't have any hidden input, that is considered 0 for all first inputs.
 the above diagram denotes how a single neuron works over time.
@@ -333,10 +333,10 @@ one problem with plain RNNs is that they have a short term memory. all they reme
 1. LSTM(Long Short Term Memory)
 2. GRU(Gated Recurrent Unit)
 to visualize both of them, lets first check how RNN cells work
-![[Pasted image 20240119221254.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119221254.png/?raw=true)
+![[Pasted image 20240119221254.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119221254.png/?raw=true)
 RNN cells take in 2 inputs and 2 outputs
 LSTM has 3 inputs and 3 outputs. two of them being memory based. two of them is as usual, the input and the hidden layer of the previous part of the sequence. the third is something called the long term memory.
-![[Pasted image 20240119221525.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119221525.png/?raw=true)
+![[Pasted image 20240119221525.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119221525.png/?raw=true)
 
 the long term memory goes through a gate called forget to forget unnecessary parts. then, the input gate takes in both the short term memory and the actual input and determine which are important enough to use in long term memory. and finally the output gate is used to determine y and short term memory. **here both y and h are the same.**
 ```python
@@ -356,7 +356,7 @@ class Net(nn.Module):
 		return out
 ```
 next is the GRU cell. it simplifies the LSTM cell by merging long term and short term memories by just having one memory.
-![[Pasted image 20240119221958.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119221958.png/?raw=true)
+![[Pasted image 20240119221958.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119221958.png/?raw=true)
 here there is no output gate and the whole memory state is just given as output.
 ```python
 class Net(nn.Module):
@@ -374,7 +374,7 @@ class Net(nn.Module):
 		return out
 ```
 to see which to use, it is always good to try both and see which is better on your data.
-![[Pasted image 20240119222221.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119222221.png/?raw=true)
+![[Pasted image 20240119222221.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119222221.png/?raw=true)
 
 ## Evaluating RNNs
 we use Mean squared error as our loss function, since this is a regression task.
@@ -412,11 +412,11 @@ mse.compute()
 # Multi Input and Multi Output Models
 ## Multi input models
 multi input can be used for many cases, like when we have 2 different types of data or when we have more info on the same data, etc.
-![[Pasted image 20240119225326.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119225326.png/?raw=true)
+![[Pasted image 20240119225326.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119225326.png/?raw=true)
 
 lets take a dataset containing 964 images of alphabets from 30 languages. we have two inputs - the image of the alphabet and the language it belongs to through a one hot encoded list.
 in a multi input model, we first send in the inputs in their own architectures and then after a few layers, we concatenate them to give the output we need.
-![[Pasted image 20240119225544.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119225544.png/?raw=true)
+![[Pasted image 20240119225544.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119225544.png/?raw=true)
 
 lets define the dataset 
 ```python
@@ -486,10 +486,10 @@ for epoch in range(10):
 
 ## Multi Output models
 just like multi input, multi output is also used in many places.
-![[Pasted image 20240119231815.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119231815.png/?raw=true)
+![[Pasted image 20240119231815.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119231815.png/?raw=true)
 
 lets take the same data as before and predict both the character and the language it belongs to. the architecture is first an image layer giving some embeddings and using those embeddings for both ,predicting the character and the language.
-![[Pasted image 20240119231942.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119231942.png/?raw=true)
+![[Pasted image 20240119231942.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119231942.png/?raw=true)
 
 the dataset can be defined the same as before. the neural network as a small change
 ```python
@@ -532,8 +532,8 @@ for epoch in range(10):
 the evaluating part of multi output models is the same as usual, except now we calculate the metrics for both outputs.
 recalling the training loop from before, we added both losses so that we weigh both losses equally. if we want the model to focus on one loss more than the other, we can use loss weighting, where we multiply the loss of interest with a weight.
 usually we multiply with weights that add up to 1
-![[Pasted image 20240119233545.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119233545.png/?raw=true)
+![[Pasted image 20240119233545.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119233545.png/?raw=true)
 
 however, if loss weighting is used, we must remember to equally scale both losses before weighting. this is to make sure that one loss isn't negligible compared to the other.
-![[Pasted image 20240119233727.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119233727.png/?raw=true)
+![[Pasted image 20240119233727.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240119233727.png/?raw=true)
 

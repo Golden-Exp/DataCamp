@@ -115,7 +115,7 @@ R-CNN for object detection
 1. generation of region proposals
 2. extracts features from the proposed region using CNN
 3. features used to predict category
-![[Pasted image 20240216081128.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240216081128.png/?raw=true)
+![[Pasted image 20240216081128.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240216081128.png/?raw=true)
 
 using a pretrained model as backbone(core CNN architecture) is very useful here.
 the model has a features block for generating features, pooling layer to reduce size and linear layer for classification. we only need the features block for feature extraction.
@@ -169,7 +169,7 @@ class ObjectDetectorCNN(nn.Module):
 ```
 
 Anchor box - predefined bounding boxes with different shapes and aspect ratios.
-![[Pasted image 20240217220436.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240217220436.png/?raw=true)
+![[Pasted image 20240217220436.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240217220436.png/?raw=true)
 Faster R-CNN
 follows a different architecture
 it consists of
@@ -177,10 +177,10 @@ it consists of
 2. RPN(Regional Proposal Network) - generates bounding boxes
 3. Classifier and Regressor
 
-![[Pasted image 20240217220456.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240217220456.png/?raw=true)
+![[Pasted image 20240217220456.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240217220456.png/?raw=true)
 
 first anchor boxes are generated over potential regions and then the classifier and regressor predict if an object is present and the coordinates of the bounding box. then finally ROI pooling is used to finetune the boxes, then it is connected to fully connected layers where we predict the object
-![[Pasted image 20240217220711.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240217220711.png/?raw=true)
+![[Pasted image 20240217220711.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240217220711.png/?raw=true)
 
 ```python
 #creating an R-CNN Model
@@ -212,7 +212,7 @@ in_features = model.roi_heads.box_predictor.cls_score.in_features
 model.roi_heads.box_predictor = FasterRCNNPredictor(in_features, num_classes)
 ```
 
-![[Pasted image 20240217224235.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240217224235.png/?raw=true)
+![[Pasted image 20240217224235.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240217224235.png/?raw=true)
 
 # Image Segmentation
 image segmentation is the process of classifying each pixel into multiple segments like object, foreground, background, etc.
@@ -221,11 +221,11 @@ there are 3 types
 2. instance: here, objects of one particular class is separated. ![[Pasted image 20240217224948.png]]
 3. Panoptic: here, instance and semantic is combined to give different types of segmentation among the same and different classes![[Pasted image 20240217225059.png]]
 to create a "mask", we assign just the object's pixels 1 and others 0. this is our mask. to get the object alone from the original, multiply with the mask
-![[Pasted image 20240217225247.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240217225247.png/?raw=true)
+![[Pasted image 20240217225247.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240217225247.png/?raw=true)
 
 
 for Instance Segmentation we use R-CNN to predict a third thing - mask
-![[Pasted image 20240217230142.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240217230142.png/?raw=true)
+![[Pasted image 20240217230142.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240217230142.png/?raw=true)
 
 ```python
 from torchvision.models.detection import  maskrcnn_resnet50_fpn
@@ -256,15 +256,15 @@ for i in range(2):
 	alpha=0.5
 	)
 ```
-![[Pasted image 20240217233125.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240217233125.png/?raw=true)
+![[Pasted image 20240217233125.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240217233125.png/?raw=true)
 
 the model predicts the labels available in the image and each label has its own mask.
 the shape of the masks tensor is (number of labels x 1 x height x width)
 
 U - Net is used for semantic segmentation.
-![[Pasted image 20240218225750.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240218225750.png/?raw=true)
+![[Pasted image 20240218225750.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240218225750.png/?raw=true)
 
-![[Pasted image 20240218233625.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240218233625.png/?raw=true)
+![[Pasted image 20240218233625.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240218233625.png/?raw=true)
 
 first, the original image is passed into a CNN to get some feature maps and is down sampled(max pooling) to get lower resolution images with very much info extracted. repeat this process a few times for encoder. then we transition to the decoder with the bottleneck which also down samples and then up samples(transpose convolutions).
 transpose convolutions increase the dimensions of the feature maps by adding a few layers of 0s around the image.
@@ -309,9 +309,9 @@ class UNet(nn.Module):
 ```
 
 panoptic segmentations involve using both instance and semantic
-![[Pasted image 20240219001425.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240219001425.png/?raw=true)
+![[Pasted image 20240219001425.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240219001425.png/?raw=true)
 
-![[Pasted image 20240219001443.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240219001443.png/?raw=true)
+![[Pasted image 20240219001443.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240219001443.png/?raw=true)
 
 ```python
 model = UNet()
@@ -333,11 +333,11 @@ for mask in instance_masks:
 ```
 `argmax` is done for semantic masks to convert it into a single image with multiple objects masked instead of separate masks. argmax goes through each pixel in every mask and returns the index of whichever mask has the highest confidence. that index acts as the id and as the differentiating color for that object
 for each mask a unique id is assigned to the pixels with more confidence. so that we can differentiate between objects. the id starts from 3 because semantic has 3 things segmented already. the objects, floor and sky(for this image)
-![[Pasted image 20240219002052.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240219002052.png/?raw=true)
+![[Pasted image 20240219002052.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240219002052.png/?raw=true)
 
 # Image Generation
 GANs are used to generate images. Generative Adversarial Networks are used to create images from noice - picked from a standard normal distribution
-![[Pasted image 20240219193311.png]](https://github.com/Golden-Exp/FastAi/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240219193311.png/?raw=true)
+![[Pasted image 20240219193311.png]](https://github.com/Golden-Exp/DataCamp/blob/main/Deep%20Learning/Attachments/Pasted%20image%2020240219193311.png/?raw=true)
 
 The generator tries to create a realistic image that the discriminator can't differentiate and the discriminator tries its best to classify if the image is fake or not. this conflicting approach helps train both the generator and the discriminator better.
 below is a simple linear generator
